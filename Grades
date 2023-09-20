@@ -9,9 +9,11 @@ If there is more than one student with the same grade (1-7) assigned to them, or
 
 Let's write a SQL-query.
 
+***
 select case when grade > 7 then name else 'NULL' end as name,
     grade, marks
 from students
 left join grades
 on students.marks between grades.Min_Mark and grades.Max_Mark
 order by grade desc, name, marks
+***
