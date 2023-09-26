@@ -1,4 +1,4 @@
-# SQL Query for Finding Products Often Ordered with [product X]
+# SQL Query for finding hackers, who succesful solved more than one competitions tasks
 
 ## Introduction
 This SQL query is designed to find the respective hacker_id and name of hackers who achieved full scores for more than one challenge
