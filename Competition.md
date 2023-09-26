@@ -10,19 +10,19 @@ The following tables contain contest data:
 - Challenges: The challenge_id is the id of the challenge, the hacker_id is the id of the hacker who created the challenge, and difficulty_level is the level of difficulty of the challenge; 
 - Submissions: The submission_id is the id of the submission, hacker_id is the id of the hacker who made the submission, challenge_id is the id of the challenge that the submission belongs to, and score is the score of the submission.
 
-# SQL-query
-'''
-select main.hacker_id, name, sucsess
-from hackers
-right join (select submissions.hacker_id as hacker_id, count(*) as sucsess
-    from submissions
-    join challenges
-    on submissions.challenge_id = challenges.challenge_id
-    join difficulty
-    on challenges.difficulty_level = difficulty.difficulty_level
-    where submissions.score >= difficulty.score
-    group by submissions.hacker_id
-    having count(*) > 1) as main
-on hackers.hacker_id = main.hacker_id
-order by sucsess desc, main.hacker_id
+## SQL-query
+```sql
+SELECT main.hacker_id, name, sucsess
+FROM hackers
+RIGHT JOIN (SELECT submissions.hacker_id AS hacker_id, count(*) AS sucsess
+    FROM submissions
+    JOIN challenges
+    ON submissions.challenge_id = challenges.challenge_id
+    JOIN difficulty
+    ON challenges.difficulty_level = difficulty.difficulty_level
+    WHERE submissions.score >= difficulty.score
+    GROUP BY submissions.hacker_id
+    HAVING count(*) > 1) as main
+ON hackers.hacker_id = main.hacker_id
+ORDER BY sucsess desc, main.hacker_id
 '''
